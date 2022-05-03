@@ -67,7 +67,7 @@ const {
  
  const waitingForConnection = {}
 
- const execTransfer = (leg_id, token, logger,csClient) => {
+ const execTransfer = (leg_id, logger,csClient) => {
   logger.info({ leg_id }, "execTransfer : sending transfer request")
   // look the documentation at: https://developer.vonage.com/api/voice under the `Modify an in progress call` section
   return csClient({
@@ -142,7 +142,7 @@ const {
          
          //IF THE CUSTOMER IS NOT GONNA RESPOND IN TIMEOUT SECONDS, TRANSFER THE CALL
          const myTimeout = setTimeout(
-           () => execTransfer(uuid, generateBEToken(), logger,csClient), 
+           () => execTransfer(uuid, logger,csClient), 
            timeout * 1000
          );
          
